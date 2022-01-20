@@ -1,0 +1,27 @@
+My first thought was to use a modified version of Djikstra's algorithm, where we track the maximum teleportation route required between
+the stations. This is the solution I ended up using, but at first I was dubious about it because the graph in this case is fully connected
+as all nodes are connected to each other so I thought that I could maybe think of a better solution.
+
+My next rough thought was to consider an arbitrary path without cycles which connects all the nodes and up at Earth, and then iteratively
+take the longest section and decompose it into two smaller parts.
+
+I then thought of consider the optimal path using only three nodes (including Earth and Zearth), and then take each section of the path and
+as above, iteratively decompose each section into smaller parts until we get the optimal soluttion. However, I then realised that this
+wouldn't necessarily produce thhe optimal solution.
+
+Then I thought of consider the graph with all the nodes, and then remove the longest paths one by one, until we can't remove anymore paths
+without it being impossible to reach Earth. This would produce a correct solution, however, I believed that using a
+breadth-first/depth-first type algorithhm to check if a path to Earth to exists every time we remove an edge would be costly.
+
+So, I decided djikstra would be the best option. My solution then was as follows:
+
+1. Create nodes for each station.
+2. Find the distance between different nodes.
+3. Apply the djikstra type algorithm to find the answer.
+
+
+The time complexity of my djikstra's algorithm is O(n^2) and so is the time complexity of the algorithm I wrote to find
+the distance dictionary. This is the overall time complexity of my method.
+
+I am not sure if it is possible to improve the time complexity, as I believe its necessary to have a nested for-loop
+somewhere to calculate the distances between nodes, which leads to an O(n^2) complexity.
